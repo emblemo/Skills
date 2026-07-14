@@ -1,71 +1,72 @@
 ---
 version: alpha
 name: Mono UI Style Kit
-description: Uniwersalny, monochromatyczny system stylowania komponentów (dark-only). Nie zawiera layoutu ani pozycjonowania — dotyczy wyłącznie WYGLĄDU elementów (kolor, typografia, kształt, obramowania, stany). Nakładany na istniejący układ paneli/sidebarów bez zmiany ich rozmieszczenia.
+description: A universal, monochrome component styling system (dark-only). Contains no layout or positioning — it covers only the LOOK of elements (color, typography, shape, borders, states). Applied on top of an existing panel/sidebar layout without changing where anything sits.
 
 # ⚠ STATUS: STANDARD / SOURCE OF TRUTH
-# Ten plik jest jedynym źródłem prawdy dla wyglądu i spójności UI w projekcie.
-# Każda decyzja stylistyczna (kolor, typografia, kształt, cień, stan interakcji)
-# musi dać się wyprowadzić z tego pliku. Jeśli czegoś tu nie ma — patrz sekcja
-# "Rozszerzanie standardu" na końcu dokumentu, zanim wprowadzisz coś nowego.
+# This file is the single source of truth for the look and consistency of the
+# project's UI. Every styling decision (color, typography, shape, shadow,
+# interaction state) must be traceable back to this file. If something isn't
+# covered here yet — see "Extending the standard" at the end of this document
+# before introducing anything new.
 
 colors:
-  primary: "#FFFFFF"      # Ink White — cały tekst, aktywne wypełnienia, obramowania suwaka/gałki, wypełnienie przycisku
-  neutral: "#000000"      # Canvas Black — tło, wypełnienie opcji select, wypełnienie kciuka slidera i gałki toggle
-  on-primary: "#000000"   # treść na białym tle (etykieta przycisku, aktywna etykieta segmentu) — kontrast 21:1
+  primary: "#FFFFFF"      # Ink White — all text, active fills, slider/knob borders, button fill
+  neutral: "#000000"      # Canvas Black — background, option fill, slider-thumb & toggle-knob fill
+  on-primary: "#000000"   # content on a white fill (button label, active segmented label) — 21:1 contrast
 
 colors_alpha:
-  secondary:     "rgba(255,255,255,0.70)"  # tekst drugorzędny, etykiety, linki reset, kciuk scrollbara
-  border:        "rgba(255,255,255,0.30)"  # domyślne obramowanie kontrolek, tor slidera, placeholder
-  border-panel:  "rgba(255,255,255,0.16)"  # obramowanie powierzchni "szklanej"
-  divider:       "rgba(255,255,255,0.10)"  # linie sekcji / separatory
-  hover-plate:   "rgba(255,255,255,0.08)"  # hover nieaktywnego przycisku w segmented control
-  track-faint:   "rgba(255,255,255,0.05)"  # tor scrollbara
-  credit-faint:  "rgba(255,255,255,0.35)"  # tekst pomocniczy / disabled note
-  input-bg:      "rgba(0,0,0,0.50)"        # tło "wpuszczonych" kontrolek (select, toggle, input, color-control)
-  surface-bg:    "rgba(1,1,1,0.12)"        # tło powierzchni "szklanej" (pod blur)
+  secondary:     "rgba(255,255,255,0.70)"  # secondary text, labels, reset links, scrollbar thumb
+  border:        "rgba(255,255,255,0.30)"  # default control border, slider track, placeholder
+  border-panel:  "rgba(255,255,255,0.16)"  # border of a "glass" surface
+  divider:       "rgba(255,255,255,0.10)"  # section dividers / separators
+  hover-plate:   "rgba(255,255,255,0.08)"  # hover on an inactive segmented-control button
+  track-faint:   "rgba(255,255,255,0.05)"  # scrollbar track
+  credit-faint:  "rgba(255,255,255,0.35)"  # helper text / disabled note
+  input-bg:      "rgba(0,0,0,0.50)"        # recessed fill behind interactive controls
+  surface-bg:    "rgba(1,1,1,0.12)"        # fill of a "glass" surface (under blur)
 
 shadows:
-  ambient: "rgba(0,0,0,0.40)"   # jedyny cień w systemie — box-shadow: 0 8px 32px {shadows.ambient}
+  ambient: "rgba(0,0,0,0.40)"   # the only shadow in the system — box-shadow: 0 8px 32px {shadows.ambient}
 
 effects:
-  surface-blur: "blur(5px)"     # backdrop-filter na powierzchniach "szklanych"
+  surface-blur: "blur(5px)"     # backdrop-filter on "glass" surfaces
 
 typography:
-  title:          # nagłówek / tytuł panelu
+  title:          # heading / panel title
     fontFamily: Inter
     fontSize: 16px
     fontWeight: 500
     lineHeight: 1.2
-  section-label:  # etykiety sekcji
+  section-label:  # section header labels
     fontFamily: Inter
     fontSize: 11px
     fontWeight: 400
     letterSpacing: 0.5px
     textTransform: uppercase
-  body:           # etykiety kontrolek, wartości, tekst select/hex, etykiety przycisków
+  body:           # control labels, values, select/hex text, button labels
     fontFamily: Inter
     fontSize: 12px
     fontWeight: 400
-  meta:           # linki, stopki, drobny tekst pomocniczy
+  meta:           # links, footers, small helper text
     fontFamily: Inter
     fontSize: 11px
     fontWeight: 400
     letterSpacing: 0.5px
-  button:         # przyciski akcji głównej
+  button:         # primary action buttons
     fontFamily: Inter
     fontSize: 12px
-    fontWeight: 700   # ⚠ patrz uwaga w sekcji Typografia
+    fontWeight: 700   # ⚠ see the note in the Typography section
 
 rounded:
-  xs: 2px       # najmniejsze elementy (np. wnętrze swatcha koloru)
-  sm: 3px       # przyciski, pigułka segmentu
-  md: 6px       # standardowy promień kontrolek i powierzchni
-  full: 9999px  # elementy binarne/przeciągane (toggle, kciuk slidera)
+  xs: 2px       # smallest elements (e.g. inside a color swatch)
+  sm: 3px       # buttons, segmented-control pill
+  md: 6px       # standard radius for controls and surfaces
+  full: 9999px  # binary/draggable elements (toggle, slider thumb)
 
 sizing:
-  control-h: 32px     # kanoniczna wysokość kontrolki (input, select, button, toggle-track opcjonalnie mniejszy)
-  unit: 4px           # bazowa jednostka odstępów wewnątrz komponentu (4 / 8 / 16)
+  control-h: 32px     # canonical control height
+  unit: 4px           # base spacing unit inside a component (4 / 8 / 16)
 
 components:
   surface:        { backgroundColor: "{colors_alpha.surface-bg}", border: "1px solid {colors_alpha.border-panel}", rounded: "{rounded.md}", textColor: "{colors.primary}" }
@@ -80,60 +81,60 @@ components:
 
 # Mono UI Style Kit
 
-## Zasada
+## Principle
 
-To jest **kit stylowania**, nie layout. Nie mówi gdzie ma stać sidebar, panel czy kolumna — mówi **jak ma wyglądać** dowolny element wewnątrz istniejącego układu: kolor, typografia, kształt, obramowanie, stany hover/focus/active. Nakładasz to na gotowy szkielet UI (sidebar, panel, toolbar — cokolwiek już masz) bez zmiany jego rozmieszczenia.
+This is a **styling kit**, not a layout. It doesn't say where a sidebar, panel, or column should sit — it says **how any element should look** inside an existing layout: color, typography, shape, border, hover/focus/active states. You apply it on top of whatever UI skeleton already exists (sidebar, panel, toolbar — anything) without changing its arrangement.
 
-Monochromatyczne, tylko tryb ciemny. Jedyne dwa "twarde" kolory to biały (`--primary-color`) i czarny (`--bg-color`) — cała reszta to biały w różnych alfa. Jedyny akcent interakcji to **inwersja**: aktywny/wybrany element odwraca się w biały fill + czarna treść.
+Monochrome, dark mode only. The only two "hard" colors are white (`--primary-color`) and black (`--bg-color`) — everything else is white at various alpha levels. The single interaction accent is **inversion**: an active/selected element flips to a white fill with black content.
 
-## Kolory
+## Colors
 
-| Token | Wartość | Rola |
+| Token | Value | Role |
 |---|---|---|
-| `--primary-color` | `#FFFFFF` | cały tekst, aktywne wypełnienia, obramowania — 21:1 |
-| `--bg-color` | `#000000` | tło, wypełnienie opcji, kciuk/gałka |
-| `--secondary-color` | biały 70% | tekst drugorzędny, etykiety, linki |
-| `--border-color` | biały 30% | domyślne obramowanie kontrolek |
-| obramowanie powierzchni | biały 16% | krawędź "szklanej" powierzchni |
-| `--divider-color` | biały 10% | separatory sekcji |
-| hover segmentu | biały 8% | hover nieaktywnego przycisku |
-| tor scrollbara | biały 5% | tło scrollbara |
-| `--input-bg` | czarny 50% | tło "wpuszczonych" kontrolek |
-| tło powierzchni | czarny 12% | tło pod blur |
+| `--primary-color` | `#FFFFFF` | all text, active fills, borders — 21:1 |
+| `--bg-color` | `#000000` | background, option fill, thumb/knob |
+| `--secondary-color` | white 70% | secondary text, labels, links |
+| `--border-color` | white 30% | default control border |
+| surface border | white 16% | edge of a "glass" surface |
+| `--divider-color` | white 10% | section separators |
+| segmented hover | white 8% | hover on an inactive button |
+| scrollbar track | white 5% | scrollbar background |
+| `--input-bg` | black 50% | fill of "recessed" controls |
+| surface fill | black 12% | fill under the blur |
 
-**Aktywne = inwersja.** Brak koloru akcentu dla stanu wybranego — kontrolka odwraca się do biały-fill/czarna-treść (pigułka segmentu, przycisk główny, gałka toggle).
+**Active = inversion.** No accent color for the selected state — the control flips to a white-fill/black-content look (segmented pill, primary button, toggle knob).
 
-## Typografia
+## Typography
 
-Jedna rodzina — **Inter**, trzy rozmiary: 16 / 12 / 11. Hierarchię poniżej tytułu buduje rozmiar i alfa bieli, **nigdy nowy rozmiar**.
+One family — **Inter**, three sizes: 16 / 12 / 11. Hierarchy below the title comes from size and white-alpha, **never a new size**.
 
-- **Title** 16/500 — tytuł/nagłówek najwyższego poziomu.
-- **Body** 12/400 — każda etykieta interaktywna, wartość, select, pole hex, etykieta przycisku/segmentu.
-- **Section label** 11/400, UPPERCASE, +0.5px — nagłówki sekcji.
-- **Meta** 11/400, +0.5px — linki, drobny tekst.
+- **Title** 16/500 — top-level heading/title.
+- **Body** 12/400 — every interactive label, value, select, hex field, button/segmented label.
+- **Section label** 11/400, UPPERCASE, +0.5px — section headers.
+- **Meta** 11/400, +0.5px — links, small text.
 
-> ⚠ Przyciski mają `font-weight: 700`, ale jeśli font ładujesz tylko w wagach 400/500, przeglądarka zrobi **faux-bold**. Albo dogrywasz wagę 700 z Google Fonts, albo ustawiasz przycisk na 500.
+> ⚠ Buttons use `font-weight: 700`, but if you only load the font in weights 400/500, the browser will **faux-bold** it. Either add weight 700 from Google Fonts, or set the button to 500.
 
-## Kształty
+## Shapes
 
-Miękko-prostokątne, nie pigułkowe. **6px** dla kontenerów (powierzchnia, select, color-/save-control, chassis segmentu, num-input), **3px** dla akcji (przyciski, pigułka i przyciski segmentu), **2px** dla wnętrza swatcha, **pełny promień** tylko dla elementów binarnych/przeciąganych (tor toggle, kciuk slidera, gałka toggle). Kontenery są zawsze łagodniejsze niż akcje w środku.
+Soft-rectangular, not pill-shaped. **6px** for containers (surface, select, color-/save-control, segmented chassis, num-input), **3px** for actions (buttons, segmented pill and buttons), **2px** for a swatch's inner corner, **full radius** only for binary/draggable elements (toggle track, slider thumb, toggle knob). Containers are always softer than the actions inside them.
 
-## Głębia
+## Depth
 
-Tylko blur + krawędź, bez cieni na pojedynczych elementach. Powierzchnia "szklana" (`surface-bg` + `blur(5px)` + 1px `border-panel` + jeden ambient shadow `0 8px 32px`) to jedyna podniesiona warstwa. Kontrolki wewnątrz są "wpuszczone" (`input-bg` + 1px krawędź). Aktywne kontrolki **odwracają się**, nie unoszą. Żadnych cieni per-element, żadnego hover-lift.
+Blur + edge only, no shadows on individual elements. The "glass" surface (`surface-bg` + `blur(5px)` + 1px `border-panel` + one ambient shadow `0 8px 32px`) is the only elevated layer. Controls inside it are "recessed" (`input-bg` + 1px border). Active controls **invert**, they don't lift. No per-element shadows, no hover-lift.
 
 ---
 
-# Fundamenty (wklej najpierw)
+# Foundations (paste first)
 
-### Import fontu (w `<head>`)
+### Font import (in `<head>`)
 ```html
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
 ```
 
-### Zmienne + reset
+### Variables + reset
 ```css
 :root {
   --bg-color: #000000;
@@ -156,11 +157,11 @@ body {
 
 ---
 
-# Komponenty (styl, bez pozycjonowania)
+# Components (style only, no positioning)
 
-Każdy blok CSS opisuje **wygląd elementu w miejscu, gdzie już się znajduje** w Twoim layoucie. Nie ma tu `position`, `top/right/left`, sztywnych szerokości viewportu ani breakpointów układu — jeśli chcesz ograniczyć szerokość konkretnego komponentu (np. selecta), zrób to lokalnie w miejscu użycia.
+Every CSS block below describes **how an element should look wherever it already sits** in your layout. There's no `position`, no `top/right/left`, no hardcoded viewport widths or layout breakpoints — if you want to constrain the width of a specific component (e.g. a select), do it locally at its usage site.
 
-### Powierzchnia "szklana" (panel / karta / sidebar — tylko styl)
+### "Glass" surface (panel / card / sidebar — style only)
 ```css
 .surface {
   background: rgba(1, 1, 1, 0.12);
@@ -172,14 +173,14 @@ Każdy blok CSS opisuje **wygląd elementu w miejscu, gdzie już się znajduje**
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
   border: 1px solid rgba(255, 255, 255, 0.16);
 }
-/* opcjonalny scrollbar wewnętrzny — dodaj gdy .surface ma overflow-y: auto */
+/* optional internal scrollbar — add when .surface has overflow-y: auto */
 .surface::-webkit-scrollbar { width: 8px; }
 .surface::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.05); border-radius: var(--border-radius); }
 .surface::-webkit-scrollbar-thumb { background: var(--secondary-color); border-radius: var(--border-radius); }
 .surface::-webkit-scrollbar-thumb:hover { background: var(--primary-color); }
 ```
 
-### Tytuł
+### Title
 ```css
 .title {
   font-size: 16px;
@@ -189,7 +190,7 @@ Każdy blok CSS opisuje **wygląd elementu w miejscu, gdzie już się znajduje**
 }
 ```
 
-### Sekcja + nagłówek sekcji + link reset
+### Section + section header + reset link
 ```css
 .section {
   display: flex; flex-direction: column; gap: 4px;
@@ -205,7 +206,7 @@ Każdy blok CSS opisuje **wygląd elementu w miejscu, gdzie już się znajduje**
 .reset-btn:hover { color: var(--primary-color); }
 ```
 
-### Wiersz kontrolki + etykieta + stan disabled
+### Control row + label + disabled state
 ```css
 .row { display: flex; align-items: center; gap: 8px; min-height: 32px; }
 .row-label { flex-shrink: 0; font-size: 12px; color: var(--secondary-color); line-height: 24px; }
@@ -213,7 +214,7 @@ Każdy blok CSS opisuje **wygląd elementu w miejscu, gdzie już się znajduje**
 .row input[type="range"] { flex: 1; min-width: 0; }
 ```
 
-### Input numeryczny
+### Numeric input
 ```css
 .num-input {
   width: 32px; height: 32px; flex-shrink: 0;
@@ -231,7 +232,7 @@ Każdy blok CSS opisuje **wygląd elementu w miejscu, gdzie już się znajduje**
 .num-input[type="number"] { -moz-appearance: textfield; }
 ```
 
-### Suwak (range)
+### Range slider
 ```css
 input[type="range"] { height: 32px; background: transparent; outline: none; -webkit-appearance: none; cursor: pointer; }
 
@@ -254,7 +255,7 @@ input[type="range"]::-moz-range-thumb {
 input[type="range"]::-moz-range-thumb:hover { transform: scale(1.25); }
 ```
 
-### Kontrolka koloru (swatch + hex + clear)
+### Color control (swatch + hex + clear)
 ```css
 .color-control {
   height: 32px;
@@ -290,7 +291,7 @@ input[type="color"]::-moz-color-swatch { border: none; border-radius: 2px; }
 .row.off input[type="color"], .row.off .color-hex { opacity: 0.3; }
 ```
 
-### Toggle (przełącznik)
+### Toggle switch
 ```css
 .toggle {
   position: relative; width: 32px; height: 22px; flex-shrink: 0;
@@ -312,7 +313,7 @@ input[type="color"]::-moz-color-swatch { border: none; border-radius: 2px; }
 .toggle:hover input:checked + .knob { transform: translateX(10px) scale(1.15); }
 ```
 
-### Przycisk (akcja główna) + rząd przycisków
+### Button (primary action) + button row
 ```css
 button {
   background: var(--primary-color);
@@ -329,7 +330,7 @@ button:active { transform: scale(0.96); }
 .button-row button { flex: 1; height: 32px; font-weight: 700; padding: 0 8px; }
 ```
 
-### Select (rozwijana lista)
+### Select (dropdown)
 ```css
 select {
   height: 32px; flex-shrink: 0;
@@ -346,7 +347,7 @@ select:hover, select:focus { border-color: var(--primary-color); }
 select option { background: #000000; color: var(--primary-color); padding: 8px; }
 ```
 
-### Segmented control (przesuwana pigułka)
+### Segmented control (sliding pill)
 ```css
 .segmented {
   position: relative; display: flex; align-items: center;
@@ -371,9 +372,9 @@ select option { background: #000000; color: var(--primary-color); padding: 8px; 
 .segmented button.active { color: #000000; background: transparent; }
 .segmented button.active:hover { background: transparent; }
 ```
-> Dla >2 opcji: poszerz `.seg-pill` do `calc(100%/N - ...)` i przesuwaj wg indeksu aktywnej opcji.
+> For >2 options: widen `.seg-pill` to `calc(100%/N - ...)` and translate it based on the active index.
 
-### Pole zapisu (input + przycisk inline)
+### Save control (input + inline button)
 ```css
 .save-control {
   height: 32px;
@@ -392,7 +393,7 @@ select option { background: #000000; color: var(--primary-color); padding: 8px; 
 .save-control button { height: 24px; padding: 0 8px; flex-shrink: 0; }
 ```
 
-### Tekst pomocniczy / link (styl, bez pozycji)
+### Helper text / link (style only, no positioning)
 ```css
 .hint { color: rgba(255, 255, 255, 0.35); font-size: 11px; }
 .link { color: var(--secondary-color); font-size: 11px; letter-spacing: 0.5px; text-decoration: none; }
@@ -402,39 +403,39 @@ select option { background: #000000; color: var(--primary-color); padding: 8px; 
 
 ---
 
-## Przejścia i mikroanimacje
+## Transitions & motion
 
-| Właściwość | Czas / easing | Gdzie |
+| Property | Duration / easing | Where |
 |---|---|---|
-| `border-color`, `color`, `opacity` | `0.2s ease` | inputy, selecty, przyciski, linki |
-| `transform` (naciśnięcie) | `0.1s ease` | `button:active` (scale 0.96) |
-| `transform` (skala kciuka/gałki) | `0.15s ease` | kciuk slidera (1.25/1.15×), clear (1.2×) |
-| przesunięcie pigułki/gałki | `0.25s cubic-bezier(0.4, 0, 0.2, 1)` | pigułka segmentu, gałka toggle |
-| `color` na etykiecie segmentu | `0.25s ease` | zmiana koloru tekstu przy aktywacji |
+| `border-color`, `color`, `opacity` | `0.2s ease` | inputs, selects, buttons, links |
+| `transform` (press) | `0.1s ease` | `button:active` (scale 0.96) |
+| `transform` (thumb/knob scale) | `0.15s ease` | slider thumb (1.25/1.15×), clear (1.2×) |
+| pill/knob travel | `0.25s cubic-bezier(0.4, 0, 0.2, 1)` | segmented pill, toggle knob |
+| `color` on segmented label | `0.25s ease` | text color flip on activation |
 
-## Do / Don't
+## Do's and Don'ts
 
-**Rób tak**
-- Trzymaj UI **monochromatyczne** — kolor należy do treści/danych, nie do chrome'u.
-- Buduj hierarchię z **rampy alfa bieli** i 1px krawędzi; zanim wymyślisz nową wartość, sprawdź czy pasuje istniejący stopień rampy.
-- Sygnalizuj aktywność przez **inwersję** (biały fill / czarna treść) — pigułka segmentu, przycisk główny, gałka toggle.
-- Trzymaj się trzech rozmiarów typografii (16/12/11) i wysokości kontrolki 32px.
-- Kontrolki mają być "wpuszczone" (`--input-bg`); podniesienie (blur + cień) zarezerwuj dla powierzchni.
+**Do**
+- Keep the UI **monochrome** — color belongs to content/data, not chrome.
+- Build hierarchy from the **white-alpha ramp** and 1px borders; before inventing a new value, check whether an existing ramp step already fits.
+- Signal active/selected state via **inversion** (white fill / black content) — segmented pill, primary button, toggle knob.
+- Hold to the three type sizes (16/12/11) and the 32px control height for new controls.
+- Keep controls "recessed" on `--input-bg`; reserve elevation for the surface alone.
 
-**Nie rób tak**
-- Nie wprowadzaj koloru marki/akcentu ani jasnego trybu bez świadomej decyzji — to zmienia charakter systemu.
-- Nie dodawaj cieni na pojedynczych kontrolkach — jeden ambient shadow żyje na powierzchni.
-- Nie rozmieszczaj tego pliku jako layoutu — nie ma tu `position`, sztywnych offsetów viewportu ani breakpointów układu. To warstwa stylu nakładana na istniejący szkielet.
-- Nie zostawiaj cichego faux-bold na przyciskach — dogrywaj wagę 700 albo ustaw 500.
+**Don't**
+- Don't introduce a brand/accent color or a light mode without a deliberate decision — it changes the character of the system.
+- Don't add shadows on individual controls — the single ambient shadow lives on the surface only.
+- Don't lay this file out as a layout spec — there's no `position`, no hardcoded viewport offsets, no layout breakpoints here. This is a styling layer applied on top of an existing skeleton.
+- Don't ship silent faux-bold on buttons — load weight 700, or set it to 500.
 
 ---
 
-## Rozszerzanie standardu
+## Extending the standard
 
-Ten plik jest **jedynym źródłem prawdy** dla stylu i spójności UI — nowe komponenty, nowe warianty i wyjątki mają tu trafiać, a nie żyć rozproszone po kodzie.
+This file is the **single source of truth** for the look and consistency of the UI — new components, new variants, and exceptions belong here, not scattered across the code.
 
-Jeśli podczas pracy trafisz na element, którego ten dokument nie opisuje (np. modal, tabela, tooltip, badge, wykres, empty state):
+If you run into an element this document doesn't describe (e.g. modal, table, tooltip, badge, chart, empty state):
 
-1. **Nie wymyślaj nowego stylu w locie.** Wyprowadź propozycję z istniejących zasad (paleta, rampa alfy, 3 rozmiary typografii, promienie, jedna głębia, inwersja jako sygnał aktywności).
-2. **Zapytaj / zaproponuj przed wdrożeniem** — zwłaszcza gdy nie jest oczywiste, jak zmapować element na istniejące tokeny.
-3. Po zatwierdzeniu — **dopisz ustalenie do tego pliku** (nowa pozycja w `components:` we frontmatterze + odpowiadająca jej sekcja CSS w części "Komponenty"), zamiast trzymać wyjątek tylko w kodzie. Dzięki temu `DESIGN.MD` zawsze odzwierciedla pełny, aktualny standard, a kolejne zmiany w UI mają się o co oprzeć.
+1. **Don't invent a new style on the fly.** Derive a proposal from the existing rules (palette, alpha ramp, the three typography sizes, radii, single depth, inversion as the activity signal).
+2. **Ask / propose before implementing** — especially when it's not obvious how to map the element onto existing tokens.
+3. Once approved — **add the decision to this file** (a new entry in `components:` in the frontmatter + the matching CSS section under "Components"), instead of keeping the exception only in the code. That way `DESIGN.MD` always reflects the full, current standard, and future UI changes have something solid to build on.

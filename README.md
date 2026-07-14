@@ -1,45 +1,49 @@
-# design-polish-skills
+# Skills
 
-Skill dla agentów kodujących (Claude Code, Cursor, Codex, OpenCode i inne wspierane przez ekosystem [Agent Skills](https://agentskills.io)), który automatyzuje "design pass" po pierwszej iteracji UI: audytuje istniejący interfejs względem pliku `DESIGN.MD` (traktowanego jako standard/source of truth projektu), dopytuje o wszystko, czego `DESIGN.MD` nie pokrywa, wprowadza styl bez zmiany layoutu, i na końcu aktualizuje `DESIGN.MD` tak, żeby zawsze pozostawał kompletnym standardem.
+A collection of skills for coding agents (Claude Code, Cursor, Codex, OpenCode, and others supporting [Agent Skills](https://agentskills.io)).
 
 ## Install
 
-```
-npx skills add emblemo/design-polish-skills
-```
-
-Instalacja tylko jednego skilla (jeśli w repo pojawi się ich więcej w przyszłości):
+Install all skills from this repo:
 
 ```
-npx skills add emblemo/design-polish-skills --skill design-polish
+npx skills add emblemo/Skills
 ```
 
-Do konkretnego agenta:
+Install just one specific skill:
 
 ```
-npx skills add emblemo/design-polish-skills -a claude-code
+npx skills add emblemo/Skills --skill design-polish
 ```
 
-Globalnie (dostępny we wszystkich projektach zamiast tylko w bieżącym):
+For a specific agent:
 
 ```
-npx skills add emblemo/design-polish-skills -g
+npx skills add emblemo/Skills --skill design-polish -a claude-code
+```
+
+Globally (available across all projects, not just the current one):
+
+```
+npx skills add emblemo/Skills --skill design-polish -g
 ```
 
 ## Reference
 
-- **[design-polish](skills/design-polish/SKILL.md)** — audytuje UI względem `DESIGN.MD`, dopytuje o braki/konflikty, stosuje styl bez ruszania layoutu, aktualizuje `DESIGN.MD` po zakończeniu.
-  - `templates/DESIGN.baseline.md` — bazowy, monochromatyczny `DESIGN.MD` (dark-only) używany, gdy w projekcie nie ma jeszcze własnego standardu.
+- **[design-polish](skills/design-polish/SKILL.md)** — automates a "design pass" after the first UI iteration. Audits the existing interface against a `DESIGN.MD` file (treated as the project's source of truth), asks about anything `DESIGN.MD` doesn't cover, applies styling without changing the layout, and updates `DESIGN.MD` at the end so it stays a complete standard.
+  - Includes `templates/DESIGN.baseline.md` — a baseline, monochrome `DESIGN.MD` (dark-only) used when the project doesn't have its own standard yet.
 
-## Jak to działa
+More skills will be added here as additional folders under `skills/`.
 
-Odpalasz frazą typu "dostyluj UI", "zrób design pass", "ujednolić styl w projekcie" — albo agent sam to zaproponuje, gdy wspomnisz o kończeniu pierwszej iteracji projektu z gotowym UI.
+## How it works
 
-Skill zawsze najpierw sprawdza, czy w projekcie jest `DESIGN.MD`:
-- jeśli tak — traktuje go jako standard i audytuje UI względem niego,
-- jeśli nie — pyta, czy chcesz bazowy szablon (`templates/DESIGN.baseline.md`) czy `DESIGN.MD` wygenerowany z analizy istniejącego kodu.
+Trigger it with something like "polish the UI", "do a design pass", "make the styling consistent" — or the agent will propose it on its own when you mention wrapping up the first iteration of a project that already has a UI.
 
-Żadna zmiana stylistyczna nie wchodzi w życie bez dopytania Cię o przypadki, których `DESIGN.MD` nie pokrywa.
+The skill always checks first whether the project has a `DESIGN.MD`:
+- if it does — it treats it as the standard and audits the UI against it,
+- if not — it asks whether you want the baseline template (`templates/DESIGN.baseline.md`) or a `DESIGN.MD` generated from analyzing your existing code.
+
+No styling change goes into effect without first asking you about cases `DESIGN.MD` doesn't cover.
 
 ## Update
 
